@@ -19,7 +19,7 @@ public:
     void setManager(PhysicsManager *manager);
     bool isEnabled(){return m_enabled;}
 
-    inline Qt3DRender::QBuffer::BufferType type() const { return m_type; }
+    //inline Qt3DRender::QBuffer::BufferType type() const { return m_type; }
     inline Qt3DRender::QBuffer::UsageType usage() const { return m_usage; }
     inline QByteArray data() const { return m_data; }
     inline Qt3DRender::QBufferDataGeneratorPtr bufferFunctor() const { return m_functor; }
@@ -34,7 +34,7 @@ private:
 
     bool m_dirty;
 
-    Qt3DRender::QBuffer::BufferType m_type;
+    //Qt3DRender::QBuffer::BufferType m_type;
     Qt3DRender::QBuffer::UsageType m_usage;
     QByteArray m_data;
     Qt3DRender::QBufferDataGeneratorPtr m_functor;

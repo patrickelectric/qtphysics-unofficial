@@ -10,7 +10,6 @@ PhysicsBuffer::PhysicsBuffer():
     m_objectName(),
     m_enabled(false),
     m_dirty(false),
-    m_type(),
     m_usage()
 {
     m_manager=Q_NULLPTR;
@@ -38,7 +37,7 @@ void PhysicsBuffer::sceneChangeEvent(const Qt3DCore::QSceneChangePtr &e){
             m_dirty |= m_data != newData;
             m_data = newData;
         } else if (propertyName == QByteArrayLiteral("type")) {
-            m_type = static_cast<Qt3DRender::QBuffer::BufferType>(propertyChange->value().value<int>());
+            //m_type = static_cast<Qt3DRender::QBuffer::BufferType>(propertyChange->value().value<int>());
             m_dirty = true;
         } else if (propertyName == QByteArrayLiteral("usage")) {
             m_usage = static_cast<Qt3DRender::QBuffer::UsageType>(propertyChange->value().value<int>());
@@ -61,7 +60,7 @@ void PhysicsBuffer::initializeFromPeer(const Qt3DCore::QNodeCreatedChangeBasePtr
     const auto typedChange = qSharedPointerCast<Qt3DCore::QNodeCreatedChange<Qt3DRender::QBufferData>>(change);
     const auto &data = typedChange->data;
     m_data = data.data;
-    m_type = data.type;
+    //m_type = data.type;
     m_usage = data.usage;
     m_syncData = data.syncData;
     m_functor = data.functor;
@@ -104,10 +103,3 @@ void PhysicsBufferFunctor::destroy(Qt3DCore::QNodeId id) const
 
 
 }
-
-
-
-
-
-
-

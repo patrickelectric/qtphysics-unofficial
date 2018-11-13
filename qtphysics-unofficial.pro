@@ -10,7 +10,7 @@ qtHaveModule(3dcore){
         src \
         imports
 
-if(config_bullet){
+if(done_config_bullet){
     message("Bullet found")
     SUBDIRS += \
          plugins/bullet
