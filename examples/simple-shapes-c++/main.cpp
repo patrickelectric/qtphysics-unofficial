@@ -19,10 +19,10 @@
 #include <QPropertyAnimation>
 
 #include "qt3dwindow.h"
-#include <QtPhysicsUnofficial/frontend/physicsbodyinfo.h>
-#include <QtPhysicsUnofficial/frontend/physicsworldinfo.h>
+#include "frontend/physicsbodyinfo.h"
+#include "frontend/physicsworldinfo.h"
 
-#include <QtPhysicsUnofficial/frontend/physicsaspect.h>
+#include "frontend/physicsaspect.h"
 
 Qt3DCore::QEntity *createScene()
 {

@@ -10,15 +10,15 @@ qtHaveModule(3dcore){
         src \
         imports
 
-if(done_config_bullet){
-    message("Bullet found")
-    SUBDIRS += \
-         plugins/bullet
-}
-else{
-     message("Bullet not found")
-}
-     #SUBDIRS += examples
+    if(done_config_bullet){
+        message("Bullet found")
+        SUBDIRS += \
+            plugins/bullet
+    }
+    else{
+        message("Bullet not found")
+    }
+    SUBDIRS += examples
 }else{
     message("Physics needs Qt3d 2.0")
 }

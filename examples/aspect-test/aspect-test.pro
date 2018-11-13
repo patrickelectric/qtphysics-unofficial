@@ -15,14 +15,7 @@ QML_IMPORT_PATH =
 # Default rules for deployment.
 include(deployment.pri)
 
-
-android{
-    LIBS += -L/home/chili/android-ndk-r10d/toolchains/arm-linux-androideabi-4.9/prebuilt/linux-x86_64/user/lib
-}
-
-!android{
-    LIBS += -L/home/chili/Downloads/bullet3-2.83.5/build-linux/install/lib
-}
+include($$PWD/../../plugins/bullet/dependencies.pri)
 
 LIBS += -lLinearMath -lBulletDynamics -lBulletCollision
 
