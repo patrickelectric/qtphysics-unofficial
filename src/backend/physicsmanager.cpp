@@ -43,7 +43,7 @@ void PhysicsManager::loadPhysicsFactories(){
             return;
         }
     }
-    QStringList libraryPaths=QCoreApplication::libraryPaths();
+    QStringList libraryPaths=QCoreApplication::libraryPaths() + QString(qgetenv("LD_LIBRARY_PATH")).split(':');
     Q_FOREACH(QString libraryPath, libraryPaths){
         physicsFactoryPluginDir.setPath(libraryPath);
         Q_FOREACH (QString plugin, physicsFactoryPluginDir.entryList(QDir::Files)) {
