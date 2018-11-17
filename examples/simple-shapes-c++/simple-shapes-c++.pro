@@ -8,7 +8,7 @@ QT += widgets
 
 SOURCES += main.cpp
 
-INCLUDEPATH += /Users/patrick/git/patrick/qtphysics-unofficial/src
+INCLUDEPATH += $$PWD/../../src
 
 
 include($$PWD/../../plugins/bullet/dependencies.pri)
