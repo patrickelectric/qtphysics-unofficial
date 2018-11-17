@@ -214,6 +214,3 @@ void PhysicsBodyInfo::sceneChangeEvent(const Qt3DCore::QSceneChangePtr &change)
 
 
 }
-
-
-
