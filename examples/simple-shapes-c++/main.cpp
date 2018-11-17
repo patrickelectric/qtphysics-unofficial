@@ -47,7 +47,6 @@ Qt3DCore::QEntity *createScene()
     sphere_body->setRestitution(1);
 
     sphereEntity->addComponent(sphereMesh);
-    sphereEntity->addComponent(sphere_body->outputTransform());
     sphereEntity->addComponent(material);
     sphereEntity->addComponent(sphere_body);
 

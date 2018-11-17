@@ -172,6 +172,12 @@ void PhysicsBodyInfo::sceneChangeEvent(const Qt3DCore::QSceneChangePtr &change)
         if(e->propertyName() == QByteArrayLiteral("updateTransform")){
             QMatrix4x4 mat= e->value().value<QMatrix4x4>();
             m_outputTransform->setMatrix(mat);
+            for(auto* entity : entities()) {
+                auto vec = entity->components();
+                if (std::none_of(std::begin(vec), std::end(vec), [](Qt3DCore::QComponent* comp){ return comp->inherits("Qt3DCore::QTransform"); })) {
+                    entity->addComponent(m_outputTransform);
+                }
+            }
             emit outputTransformChanged();
         }
         if(e->propertyName() == QByteArrayLiteral("notifyCollision")){
