@@ -13,7 +13,7 @@ CONFIG -= android_install
 
 include("dependencies.pri")
 
-DESTDIR = $$[QT_INSTALL_PLUGINS]/physicsfactories
+DESTDIR = $$OUT_PWD/physicsfactories
 
 SOURCES += \
     bulletfactory.cpp \
