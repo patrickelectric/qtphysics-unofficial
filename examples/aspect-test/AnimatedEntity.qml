@@ -21,6 +21,7 @@ Entity {
         upVector: Qt.vector3d( 0.0, 1.0, 0.0 )
         viewCenter: Qt.vector3d( 0.0, 0.0, 0.0 )
     }
+    FirstPersonCameraController { camera: camera }
     components: [
         RenderSettings {
             activeFrameGraph: ForwardRenderer {
@@ -30,7 +31,7 @@ Entity {
         }, PhysicsWorldInfo{
             gravity: Qt.vector3d(0, -9.8,0)
             scaleFactor: 1
-        }
+        }, InputSettings {}
     ]
 
     PhongMaterial {

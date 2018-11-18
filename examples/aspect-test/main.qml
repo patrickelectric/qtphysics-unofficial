@@ -26,7 +26,7 @@ ApplicationWindow {
             anchors.fill: parent
             anchors.margins: 10
             focus: true
-            aspects: ["input","physics"]
+            aspects: ["input","logic", "physics"]
 
             AnimatedEntity {
                 id:sceneroot
