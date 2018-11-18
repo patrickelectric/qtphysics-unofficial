@@ -11,14 +11,8 @@ int main(int argc, char **argv)
 
     QGuiApplication app(argc, argv);
     QQmlApplicationEngine engine;
-    //qmlRegisterType<PhysicsSetter>("PhysicsSetter", 1, 0, "PhysicsSetter");
-
-    QQuickView view;
-
-    view.resize(500, 500);
-    view.setResizeMode(QQuickView::SizeRootObjectToView);
-    view.setSource(QUrl("qrc:/main.qml"));
-    view.show();
+    engine.addImportPath(QCoreApplication::applicationDirPath() + "/../../imports");
+    engine.load(QUrl("qrc:/main.qml"));
 
     return app.exec();
 }
