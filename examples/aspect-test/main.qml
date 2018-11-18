@@ -19,9 +19,7 @@ ApplicationWindow {
     }
     Rectangle {
         id: scene
-        width: Math.min(parent.width, parent.height) - 100
-        height: width
-        anchors.centerIn: parent
+        anchors.fill: parent
         color: "darkRed"
 
         Scene3D {

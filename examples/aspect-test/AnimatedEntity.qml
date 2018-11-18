@@ -1,14 +1,15 @@
 import Qt3D.Core 2.0
 import Qt3D.Render 2.0
 import QtPhysics.unofficial 1.0
-import QtQuick 2.0 as QQ2
 import Qt3D.Input 2.0
 import Qt3D.Extras 2.0
 
 
 Entity {
-    id: sceneRoot
-    objectName: "Root"
+    id: rootEntity
+    property real friction: 0.8
+    property real restitution: 0.8
+
     Camera {
         id: camera
         projectionType: CameraLens.PerspectiveProjection
@@ -26,68 +27,66 @@ Entity {
                 camera: camera
                 clearColor: "transparent"
             }
-        },PhysicsWorldInfo{
-            gravity: Qt.vector3d(0,-10,0)
+        }, PhysicsWorldInfo{
+            gravity: Qt.vector3d(0, -9.8,0)
             scaleFactor: 1
         }
     ]
-    PhongMaterial{
-        id:material
-    }
-    SphereMesh {
-        id: torusMesh
-        radius: 2
+
+    PhongMaterial {
+        id: material
     }
 
-    Transform {
-        id: torusTransform
-        translation:Qt.vector3d(0,-5,0)
-    }
+    Entity {
+        id: sphereEntity
 
-    PhysicsBodyInfo{
-        id:torusBodyinfo
-        mass:3
-        kinematic: true
-        restitution: 1
-        inputTransform: torusTransform
+        SphereMesh {
+            id: sphereMesh
+            radius: 2
+        }
+        Transform {
+            id: sphereTransform
+            translation: Qt.vector3d(0, 3, -0.2)
+        }
+        PhysicsBodyInfo{
+            id: sphereBodyinfo
+            mass: 1
+            restitution: rootEntity.restitution
+            friction: rootEntity.friction
+            inputTransform: sphereTransform
+        }
+
+        components: [sphereMesh, sphereBodyinfo, material]
     }
 
     Entity {
         id: torusEntity
-        objectName: "torus"
-        components: [ torusMesh, torusBodyinfo, material, torusBodyinfo.outputTransform ]
+
+        TorusMesh {
+            id: torusMesh
+            radius: 1
+            minorRadius: 1
+            rings: 100
+            slices: 25
+        }
+        Transform {
+            id: torusTransform
+            translation: Qt.vector3d(0, 10, 0)
+        }
+        PhysicsBodyInfo{
+            id: torusBodyinfo
+            mass: 1
+            restitution: rootEntity.restitution
+            friction: rootEntity.friction
+            inputTransform: torusTransform
+        }
+
+        components: [torusMesh, material, torusBodyinfo]
     }
 
-    Transform {
-        id: torusTransform2
-        translation:Qt.vector3d(0,10,0)
-    }
+    Entity {
+        id: floor
 
-    TorusMesh {
-        id: torusMesh2
-        radius: 1
-        minorRadius: 1
-        rings: 100
-        slices: 25
-    }
-
-    PhysicsBodyInfo{
-        id:torusBodyinfo2
-        mass:1
-        restitution: 1
-        inputTransform: torusTransform2
-
-    }
-
-
-    Entity{
-        id: torusEntity2
-        objectName: "torus2"
-        components: [ torusMesh2, material,torusBodyinfo2, torusBodyinfo2.outputTransform ]
-    }
-
-    Entity{
-        objectName: "Floor"
         CuboidMesh{
             id: planeMesh
             xExtent: 100
@@ -95,21 +94,16 @@ Entity {
             zExtent: 100
         }
         Transform{
-            id:transformFloor
-            matrix: {
-                var m = Qt.matrix4x4();
-                m.translate(Qt.vector3d(0, -10, 0));
-                return m;
-            }
+            id: transformFloor
+            translation: Qt.vector3d(0, -10, 0)
         }
         PhysicsBodyInfo{
             id:floorBodyInfo
             restitution: 1
+            friction: 1
             inputTransform: transformFloor
         }
-        components: [planeMesh,transformFloor,material,floorBodyInfo]
+
+        components: [planeMesh, material, floorBodyInfo]
     }
-
-
-
 }
