@@ -19,6 +19,8 @@ HEADERS += \
 
 DISTFILES = qmldir
 
+OUT_PWD = $$OUT_PWD/$$replace(uri, \\., /)
+DESTDIR = $$OUT_PWD
 !equals(_PRO_FILE_PWD_, $$OUT_PWD) {
     copy_qmldir.target = $$OUT_PWD/qmldir
     copy_qmldir.depends = $$_PRO_FILE_PWD_/qmldir
