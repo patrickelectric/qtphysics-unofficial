@@ -24,7 +24,9 @@ class QTPHYSICSUNOFFICIAL_EXPORT PhysicsBodyInfo:
     Q_PROPERTY(bool hasCollided READ hasCollided NOTIFY hasCollidedChanged)
     Q_PROPERTY(QQmlListProperty<Physics::PhysicsCollisionEvent> collisionsList READ collisionsList NOTIFY collisionsListChanged)
 
+    //TODO: move to matrix4x4
     Q_PROPERTY(Qt3DCore::QTransform* inputTransform READ inputTransform WRITE setInputTransform NOTIFY inputTransformChanged)
+    //TODO: remove this
     Q_PROPERTY(Qt3DCore::QTransform* outputTransform READ outputTransform NOTIFY outputTransformChanged)
 
 public:
